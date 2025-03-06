@@ -8,11 +8,14 @@ This project involves the targeted sequencing of 49 medulloblastoma samples usin
 
 **Dataset Information**
 _Instrument_: Illumina MiSeq (paired-end)
+
 _Sequencing Strategy_: Whole Exome Sequencing (WXS)
+
 _Read Type_: Paired-end sequencing
 
 **Data Files**
 ERR2356709_1.fastq.gz → Forward Reads
+
 ERR2356709_2.fastq.gz → Reverse Reads
 
 **Objective**
