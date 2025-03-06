@@ -18,11 +18,9 @@ gunzip chr17.fa.gz
 
 
 
-
 #STEP 2 : QUALITY CHECK OF FORWARD AND REVERSE READS
 
 #To install FastQC
-
 #COMMAND : 
 sudo apt-get install fastqc
 
@@ -35,13 +33,11 @@ fastqc ERR2356709_2.fastq
 
 
 #STEP 2: READ TRIMMING 
-
 #To install fastp:
 #COMMAND:
 sudo apt-get install fastp
 
 #COMMAND:
-
 fastp -i ERR2356709_1.fastq -o fastp_ERR2356709_1.fastq -I ERR2356709_2.fastq -O fastp_ERR2356709_2.fastq --adapter_fasta adapter.fasta
 
 #NOTE : adapter.fasta will contain all the adapter or overrepresented sequences to be trimmed in fasta format
@@ -58,9 +54,7 @@ fastqc fastp_ERR2356709_2.fastq
 
 
 #STEP 5: READ ALIGNMENT TO REFERENCE GENOME & INDEXING
-
 # A) Indexing of reference genome using BWA
-
 #Install BWA:
 sudo apt-get install bwa
 
@@ -75,7 +69,6 @@ bwa mem -t 2 chr17.fa fastp_ERR2356709_1.fastq fastp_ERR2356709_2.fastq > bwa_ER
 
 
 #STEP 6: CONVERT BAM TO SAM AND SORTING.
-
 #BAM TO SAM
 #COMMAND:
 samtools view bwa_ERR2356709.bam > bwa_ERR2356709.sam
@@ -88,9 +81,7 @@ samtools sort bwa_ERR2356709.bam > sorted_ERR2356709.bam
 
 
 #STEP 7: MARK DUPLICATES 
-
 #SAMtools rmdup (deprecated)-Still can be used
-
 #COMMAND:
 samtools rmdup -sS sorted_ERR2356709.bam rmdup_ERR2356709.bam
 
@@ -101,7 +92,6 @@ samtools index rmdup_ERR2356709.bam
 
 
 #STEP 8: VARIANT CALLING
-
 #To Download GATK : 
 wget -c https://github.com/broadinstitute/gatk/releases/download/4.3.0.0/gatk-4.3.0.0.zip
 
@@ -109,7 +99,6 @@ wget -c https://github.com/broadinstitute/gatk/releases/download/4.3.0.0/gatk-4.
 unzip gatk-4.3.0.0.zip
 
 #To install picard tools-
-
 sudo apt-get install picard-tools
 
 #To create sequence dictionary of the reference genome:
@@ -126,7 +115,6 @@ picard-tools AddOrReplaceReadGroups I=rmdup_ERR2356709.bam O=picard_output.bam R
 #Call variations using GATK
 #COMMAND:
 #Copy the path of the jar file and paste in the command:
-
 java -jar /mnt/c/Users/pritesh/Desktop/dna_seq/tools/gatk-4.3.0.0/gatk-package-4.3.0.0-local.jar HaplotypeCaller -R chr17.fa -I picard_output.bam -O GATK_output.vcf
 
 
@@ -138,7 +126,6 @@ bcftools filter -i 'INFO/DP>10 && QUAL>30' -o filtered_GATK_output.vcf GATK_outp
 
 
 #STEP 10 : FUNCTIONAL ANNOTATION USING ANNOVAR (optional)
-
 #DOWNLOADING ANNOVAR TOOL
 wget -c http://www.openbioinformatics.org/annovar/download/0wgxR2rIVP/annovar.latest.tar.gz
 
@@ -152,7 +139,6 @@ mkdir output
 cp GATK_output.vcf tools/ 
 
 #NOW TO ANNOTATE SO USE THIS COMMAND:
-
 annovar/table_annovar.pl GATK_output.vcf annovar/humandb/ -buildver hg19 -out output/myannovar --thread 4 -remove -protocol refGene -operation g -nastring . -vcfinput -polish
 
 #EXPLORE THE TXT FILE FOR FUNCTIONAL ANNOTATIONS
@@ -162,7 +148,6 @@ myannovar.hg19_multianno.txt
 
 
 #STEP 11 : VARIATION VISUALIZATION USING IGV
-
 #MAKE A FOLDER WHERE REQUIRED FILES FOR IGV WILL BE STORED
 mkdir IGV
 
