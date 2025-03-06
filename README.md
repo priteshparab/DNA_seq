@@ -7,6 +7,7 @@ DNA Sequencing Analysis of Medulloblastoma Samples
 This project involves the targeted sequencing of 49 medulloblastoma samples using Illumina MiSeq technology. The sequencing strategy employed is Whole Exome Sequencing (WXS), providing high-resolution data for analyzing coding regions of the genome.
 
 **Dataset Information**
+
 _Instrument_: Illumina MiSeq (paired-end)
 
 _Sequencing Strategy_: Whole Exome Sequencing (WXS)
@@ -14,6 +15,7 @@ _Sequencing Strategy_: Whole Exome Sequencing (WXS)
 _Read Type_: Paired-end sequencing
 
 **Data Files**
+
 ERR2356709_1.fastq.gz → Forward Reads
 
 ERR2356709_2.fastq.gz → Reverse Reads
