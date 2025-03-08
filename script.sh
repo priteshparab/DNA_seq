@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # STEP 1 : DOWNLOADING THE DATA
 #SRA Database : https://www.ncbi.nlm.nih.gov/sra/ERX2405312%5baccn%5d
 
@@ -160,7 +162,8 @@ GATK_output.vcf
 samtools index picard_output.bam
 samtools faidx chr17.fa
 
-Load the genome chr17.fa file and also picard_output.bam and GATK_output.vcf and visualize variations.
+echo "Pipeline execution completed. Load chr17.fa, picard_output.bam, and GATK_output.vcf in IGV for visualization."
+
 
 
 
