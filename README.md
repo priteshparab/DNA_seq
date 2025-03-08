@@ -22,8 +22,6 @@ ERR2356709_1.fastq.gz → Forward Reads
 
 ERR2356709_2.fastq.gz → Reverse Reads
 
-![DNA Sequencing Workflow](https://github.com/priteshparab/DNA_seq/blob/main/Dna_seq_workflow.png)
-
 
 **Objective**
 
