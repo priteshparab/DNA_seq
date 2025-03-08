@@ -22,6 +22,9 @@ ERR2356709_1.fastq.gz → Forward Reads
 
 ERR2356709_2.fastq.gz → Reverse Reads
 
+![DNA Sequencing Workflow]()
+
+
 **Objective**
 
 The aim of this analysis is to process and analyze DNA sequencing data for identifying potential mutations and genomic variations associated with medulloblastoma. This will involve quality control, read alignment, variant calling, and downstream analysis to gain insights into the genetic landscape of these samples.
